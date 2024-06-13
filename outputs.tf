@@ -1,3 +1,6 @@
-output login {
-    value = module.login.url
+output urls {
+    value = {
+        index = module.index.url
+        login = module.login.url
+    }
 }

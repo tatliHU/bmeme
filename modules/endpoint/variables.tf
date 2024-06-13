@@ -13,3 +13,8 @@ variable function_name {
 variable code {
   type    = string
 }
+
+variable role {
+  type        = string
+  description = "Lambda execution role"
+}

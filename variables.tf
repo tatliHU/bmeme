@@ -9,3 +9,10 @@ variable aws {
     access_key_secret = string
   })
 }
+
+variable tags {
+  type    = map(string)
+  default = {
+    "ManagedBy" = "Terraform"
+  }
+}

@@ -1,17 +1,22 @@
 import base64
+import json
 
 def lambda_handler(event, context):
     try:
         username, password = extract_basic_auth(event)
         return {
             'statusCode': 200,
-            'body': f'Username: {username}, Password: {password}'
+            'body': json.dumps({ "username": username, "password": password })
         }
     except Exception as e:
         return {
             'statusCode': 401,
-            'body': 'Unauthorized: ' + str(e)
+            'body': 'Unauthorized: ' + str(e),
+            'headers': {
+                'Access-Control-Allow-Origin': '*'
+            }
         }
+
 
 def extract_basic_auth(event):
     auth_header = event.get('headers', {})["authorization"]
